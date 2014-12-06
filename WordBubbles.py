@@ -10,9 +10,9 @@ import itertools as it
 
 
 # In[4]:
-bubbles=["hcmo","oat","rgsec","aeero","inptn"]
+bubbles=["emas","lttn","oeèyl","magte","csre"]
 questions=[6,6,5,5]
-solutions=["macho","graine","pesto"]
+solutions=["","",""]
 reponses=[]
 longReponses=[]
 for q in questions:
