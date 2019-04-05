@@ -1,0 +1,74 @@
+%!TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% -*- coding: UTF-8; -*-
+\documentclass{report}
+\usepackage[breaklinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{coloremoji-local}
+\usepackage{tikzsymbols,hyperref,enumitem,ulem}
+\usepackage{geometry,needspace,setspace}
+\usepackage{makeidx}
+\usepackage[font=footnotesize]{idxlayout}
+
+\geometry{scale={0.8,0.88},marginparwidth=40pt} % scale={largeur,hauteur}
+\onehalfspacing
+
+\usepackage{fontspec}
+\newfontfamily\sanskritfont [Script=Devanagari,Mapping=velthuis-sanskrit]{ITF Devanagari}
+\newfontfamily\datafont {Helvetica}
+\newfontfamily\greekfont {Times}
+
+\definecolor{maroon}{HTML}{800000}
+\definecolor{gold}{HTML}{FFD700}
+\definecolor{navy}{HTML}{0000FF}
+\definecolor{altwhite}{HTML}{F9F9F9}
+\colorlet{white}{altwhite}
+
+\setlistdepth{20}
+\renewlist{itemize}{itemize}{20}
+\setlist[itemize]{label=\textbullet}
+
+\newcommand{\cacheNumber}[1]{}
+\newcommand{\cacheName}[1]{\textbf{#1}\\}
+\newcommand{\mileStone}[1]{\currentpdfbookmark{#1}{#1}\marginpar{\datafont\tiny #1}}
+\newcommand{\cacheData}[1]{{\datafont\footnotesize #1}\\[-6pt]}
+\newcommand{\Number}[1]{\##1}
+\newcommand{\And}{\&}
+\newcommand{\Underscore}{\_}
+\newcommand{\Percent}{\%}
+\newcommand{\Quoted}[1]{\lq\lq #1 \rq\rq}
+\newenvironment{cacheText}{
+
+}
+{\bigskip
+
+}
+\renewenvironment{cacheText}{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{.5cm}%
+    \setlength{\rightmargin}{.5cm}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}\bigskip
+  
+  }
+
+\setlength\parindent{0pt}
+\title{{\Huge Flowering the Clogs}\\\#1--\#2399}
+\author{\LARGE 💐 Fleura64 💐}
+\date{Août 2016 --- Décembre 2018\\[64pt]%
+%\includegraphics[scale=0.25]{WordCloud.png}
+}
+\makeindex
+\begin{document}
+
+\maketitle
+
+\input{TextesLog-Fleura}
+\printindex
+\end{document}
+
