@@ -80,9 +80,17 @@ etCells=[
     ["ai"+p+n for n in "SP" for p in "123"]+["is"+p+n for n in "SP" for p in "123"],
     ["pp"+g+n for g in "MF" for n in "SP"],
         ]
-        
+
 etCols=[c for et in etCells for c in et]
 
+#=======================================================================
+# modifié le 25/08/20 pour changer l'ordre des colonnes
+#
+persons=[p+n for n in "SP" for p in "123" ]
+etCols=[t+p for t in "pi ii fi pc ps ai is".split(" ") for p in persons]
+etCols+="pI2S pI1P pI2P inf pP".split(" ")
+etCols+=["pp"+g+n for g in "MF" for n in "SP"]
+#=======================================================================
 tabTemps={
     "pi":u"ind. prs",
     "ii":u"ind. ipf",
@@ -161,7 +169,7 @@ def makeTabularParadigme(row,dictColours,title="",coulLim=False, cat="V",dictMor
         else:
             result="?"
         return result
-    
+
     def makeLine6(tenseCode):
         line=[tabTemps[tenseCode]]
         for person in [per+nb for nb in ["S","P"] for per in ["1","2","3"]]:
@@ -185,7 +193,7 @@ def makeTabularParadigme(row,dictColours,title="",coulLim=False, cat="V",dictMor
             else:
                 line.append(r"---")
         return r" & ".join(line)+r"\\"
-    
+
     def makeLineNF():
         line=["non-fini"]
         for case in ["inf","pP","ppMS","ppMP","ppFS","ppFP"]:
@@ -205,13 +213,13 @@ def makeTabularParadigme(row,dictColours,title="",coulLim=False, cat="V",dictMor
             else:
                 line.append(r"\cellcolor{%s}%s"%("black",makeValue(case)))
         return r" & ".join(line)+r"\\"
-    
+
     def makeLineCoulLim():
         line=[]
         for numLimite,limite in enumerate(listLimites):
             line.append(r"\cellcolor{%s}%s"%(listLimCoul[numLimite],"$<$"+str(limite)))
         return r"\hline\hline "+r" & ".join(line)+r"\\"
-        
+
     if cat=="V":
         top=[
             r"\begin{center}",
