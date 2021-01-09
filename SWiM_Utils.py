@@ -5,6 +5,24 @@
 #
 import re
 import pandas as pd
+import itertools as it
+from ipywidgets import FloatProgress
+
+
+swimColorsHTML={
+                "data":0x80ffff,
+                "data2":0xbfbfff,
+                "TP":0xbfff00,
+                "TP2":0xdfff80,
+                "FP":0xff6666,
+                "FP2":0xff9999,
+                "UG":0xffff80,
+                "UG2":0xff8000,
+                "OG":0xff80ff,
+                "OG2":0xffbfbf,
+                "none":0xffffff,
+                "nocell":0xbfbfbf
+}
 
 # Préparation du calcul des analogies
 ### Calcul de la différence entre deux formes
@@ -73,6 +91,74 @@ def remplacementSortie(sortie):
         else:
             nsortie+=lettre
     return nsortie
+
+
+class formesPatron:
+    '''
+    Accumulateur de formes correspondant à un patron pour calcul de la Généralisation Minimale (cf. MGL)
+    '''
+    def __init__(self):
+        self.formes=[]
+
+#    def __repr__(self):
+#        return ','.join(self.calculerGM())
+
+    def ajouterForme(self,forme):
+        self.formes.append(forme)
+
+    def calculerGM(self):
+        minLongueur=len(min(self.formes, key=len))
+        maxLongueur=len(max(self.formes, key=len))
+        # if debug: print (minLongueur, maxLongueur, file=logfile)
+        positions=[]
+        if maxLongueur>minLongueur:
+            positions.append("*")
+        for i in xrange(minLongueur, 0, -1):
+            phonemes=set([x[-i] for x in self.formes])
+            # if debug: print (phonemes, file=logfile)
+            if "." in phonemes:
+                positions.append(".")
+            else:
+                positions.append("".join(fs.lattice[phonemes].extent))
+        return patron2regexp(positions)
+
+class pairePatrons:
+    '''
+    Accumulateur de triplets (f1,f2,patron) correspondant à une paire pour calcul des Généralisations Minimales (cf. MGL)
+    '''
+    def __init__(self,case1,case2):
+        self.patrons1={}
+        self.patrons2={}
+        self.case1=case1
+        self.case2=case2
+
+#    def __repr__(self):
+#        return ','.join(self.calculerGM())
+
+    def ajouterFormes(self,forme1,forme2,patron):
+#        print (forme1,forme2,patron, file=logfile)
+        patron12=patron
+        (pat1,pat2)=patron.split("-")
+        patron21=pat2+"-"+pat1
+#        print (patron12,patron21, file=logfile)
+        if not patron12 in self.patrons1:
+            self.patrons1[patron12]=formesPatron()
+        self.patrons1[patron12].ajouterForme(forme1)
+        if not patron21 in self.patrons2:
+            self.patrons2[patron21]=formesPatron()
+        self.patrons2[patron21].ajouterForme(forme2)
+
+
+    def calculerGM(self):
+        resultat1={}
+        for patron in self.patrons1:
+            # if debug: print ("patron1", patron, file=logfile)
+            resultat1[patron]=self.patrons1[patron].calculerGM()
+        resultat2={}
+        for patron in self.patrons2:
+            # if debug: print ("patron2", patron, file=logfile)
+            resultat2[patron]=self.patrons2[patron].calculerGM()
+        return (resultat1,resultat2)
 
 # Classe pour la gestion des patrons, des classes et des transformations
 
@@ -172,6 +258,9 @@ class classesPaire:
         sortieForme={}
         for patron in self.patrons:
             if contextFree:
+                # m=re.match(ur"^[^.*\[\]()]*$",self.patrons[patron]) # désactivation des règles à scope=1
+                # if m:
+                #     break
                 filterF1=".*"+patron.split("-")[0]+"$"
             else:
                 filterF1=self.patrons[patron]
@@ -223,3 +312,42 @@ def splitCellMates(df,colonne):
     if splitIndexes:
         test=test.drop(test.index[splitIndexes])
     return test
+
+def rapports(paradigme):
+    if len(paradigme.columns.values.tolist())==2:
+        (case1,lexeme)= paradigme.columns.values.tolist()
+        case2=case1
+    else:
+        (case1,case2,lexeme)= paradigme.columns.values.tolist()
+    patrons=pairePatrons(case1,case2)
+    classes=paireClasses(case1,case2)
+    if len(paradigme)>0:
+        paradigme.apply(lambda x: patrons.ajouterFormes(x[case1],x[case2],diff(x[case1],x[case2])), axis=1)
+        (regles1,regles2)=patrons.calculerGM()
+        for regle in regles1:
+            classes.ajouterPatron(1,regle,regles1[regle])
+        for regle in regles2:
+            classes.ajouterPatron(2,regle,regles2[regle])
+        paradigme.apply(lambda x: classes.ajouterPaire(x[case1],x[case2]), axis=1)
+    (classes1,classes2)=classes.calculerClasses()
+    return (classes1,classes2)
+
+def evaluerEchantillon(paradigmes):
+    result={}
+    colonnes=paradigmes.columns.values.tolist()
+    for n,paire in enumerate(it.combinations_with_replacement(sampleCases,2)):
+        progressBar.value=n
+        # if debug: print (paire, file=logfile)
+        # if debug: print ("-".join(paire),end=", ")
+        paireListe=list(paire)
+        paireListe.append("lexeme")
+        if paire[0] in colonnes and paire[1] in colonnes:
+            paradigmePaire=paradigmes[paireListe].dropna(thresh=3, axis=0).reindex()
+            if paire[0]==paire[1]:
+                paireListe[1]="TEMP"
+                paradigmePaire.columns=paireListe
+            paradigmePaire=splitCellMates(splitCellMates(paradigmePaire,paireListe[0]),paireListe[1])
+            result[paire]=rapports(paradigmePaire)
+        else:
+            result[paire]=("missing pair", paire)
+    return result

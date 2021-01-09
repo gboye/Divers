@@ -271,3 +271,6 @@ def colorerXTicks(gAX,fSize=12):
         xtext=xlabel.get_text()
         xlabel.set_backgroundcolor(cellColors[xtext])
         xlabel.set_family("monospace")
+
+def sortCells(cells):
+    return sorted(cells,key=lambda x: etCols.index(x))

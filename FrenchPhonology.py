@@ -32,7 +32,12 @@ def recoder(chaine,table):
     return result
 
 dierese={"j":"ij", "w":"uw","H":"yH","i":"ij","u":"uw","y":"yH"}
+glideSchwa={"j6":"i", "w6":"u","H6":"y"}
 
+sampaIn = u"629EOêâôûSZJrH"
+oSampaIn = [ord(char) for char in sampaIn]
+ipaOut = u"ə ø œ ɛ ɔ ɛ̃ ɑ̃ ɔ̃ œ̃ ʃ ʒ ɲ ʁ ɥ".split(" ")
+toipa = dict(zip(oSampaIn, ipaOut))
 
 def makeFrench(prononciation,table):
     glide2voyelle={"j":"i","w":"u","H":"y"}
@@ -44,11 +49,15 @@ def makeFrench(prononciation,table):
                 setPrononciations.add(makeFrench(element,table))
             result=",".join(list(setPrononciations))
         else:
-            result=recoder(prononciation,table)
+            result=prononciation
+            m=re.match(ur"(.*[ptkbdgfsSvzZrl])([jwH]6)(.*)",result)
+            if m:
+                result=m.group(1)+glideSchwa[m.group(2)]+m.group(3)
+            result=recoder(result,table)
             result=result.replace("jj","j")
             m=re.match(ur"^(.*[^ieèEaOouy926êôâ])([jwH])$",result)
             if m:
-                # print ("pb avec un glide final", prononciation)
+                # print ("pb avec un glide final après consonne", prononciation)
                 voyelle=glide2voyelle[m.group(2)]
                 result=m.group(1)+voyelle
             m=re.match(ur"(.*[ptkbdgfsSvzZ][rl])([jwH])(.*)",result)
@@ -69,7 +78,8 @@ def makeFrench(prononciation,table):
 def normalizePhono(lDF,table):
     dfResult=lDF.copy()
     lCases=lDF.columns.tolist()
-    lCases.remove("lexeme")
+    if "lexeme" in lCases:
+        lCases.remove("lexeme")
     for case in lCases:
         dfResult[case]=dfResult[case].apply(lambda x: makeFrench(x,table))
     return dfResult

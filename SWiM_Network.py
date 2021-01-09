@@ -42,7 +42,8 @@ def ajouterPoint(lexeme,forme,case,digraphe,graphe):
 def ajouterFleche(pointDepart,pointSortie,coef,digraphe,graphe):
     digraphe.add_edge(pointDepart,pointSortie,weight=float(coef))
     if digraphe.has_edge(pointSortie,pointDepart):
-        coefGraphe=float(digraphe.edge[pointSortie][pointDepart]["weight"]+coef)/2
+        # coefGraphe=float(digraphe.edge[pointSortie][pointDepart]["weight"]+coef)/2
+        coefGraphe=float(digraphe[pointSortie][pointDepart]["weight"]+coef)/2
         graphe.add_edge(pointDepart,pointSortie,weight=coefGraphe)
 
 
@@ -51,7 +52,12 @@ def generateRowForms(row,contextFree):
     for caseDepart,formeDepart in row.dropna().iteritems():
         if caseDepart!="lexeme":
             for case in analyseCases:
-                candidateForms.ajouterFormes(case,analyseRules[(caseDepart, case)].sortirForme(formeDepart,contextFree))
+                if "," in formeDepart:                  # Gérer les cas de surabondance
+                    surFormes=formeDepart.split(",")
+                    for surForme in surFormes:
+                        candidateForms.ajouterFormes(case,analyseRules[(caseDepart, case)].sortirForme(surForme,contextFree))
+                else:
+                    candidateForms.ajouterFormes(case,analyseRules[(caseDepart, case)].sortirForme(formeDepart,contextFree))
     rowForms=candidateForms.normaliserDistributions(analyseCases)
     return rowForms
 
@@ -100,10 +106,21 @@ def bruteCliques(cliques,maxCliqueSize=51):
 def getFaithfulCliques(row,cliques):
     result=[]
     lexeme=row["lexeme"]
-    originalForms=[u"%s-%s-%s"%(lexeme,v,k) for k,v in row.dropna().iteritems() if k!="lexeme"]
+    originalForms=[]
+    for k,v in row.dropna().iteritems():
+        if k!="lexeme":
+            if "," not in v:
+                originalForms.append(u"%s-%s-%s"%(lexeme,v,k))
+            else:
+                surVs=v.split(",")
+                for surV in surVs:
+                    originalForms.append(u"%s-%s-%s"%(lexeme,surV,k))
+    # print ("originalForms",originalForms)
     for clique in cliques:
         faithful=True
         for originalForm in originalForms:
+            # if "," in originalForm:
+            #     print (originalForm,clique)
             if originalForm not in clique:
                 faithful=False
                 break
@@ -114,7 +131,7 @@ def getFaithfulCliques(row,cliques):
 def sortCliques(cliques):
     result={}
     for clique in cliques:
-        lClique=len(clique)
+        lClique=len(set([c.rsplit("-",1)[1] for c in clique]))
         if lClique not in result:
             result[lClique]=[]
         result[lClique].append(clique)
@@ -162,9 +179,13 @@ def dictCliqueForms(clique):
     for element in clique:
         lexeme,forme,case=splitCliqueNode(element)
         if "lexeme" not in result:
-            result["lexeme"]=lexeme
+            result["lexeme"]=[lexeme]
         for c in omp2msp[case]:
-            result[c]=forme
+            if c in result:
+                result[c].append(forme)
+            else:
+                result[c]=[forme]
+    result={k:",".join(sorted(v)) for k,v in result.iteritems()}
     return result
 
 
@@ -173,6 +194,7 @@ def generateFromTrial(trialFormes,contextFree):
     newRows=[]
     for iRow,row in trialFormes.iterrows():
         lexeme=row["lexeme"]
+        # print (iRow,lexeme)
         # générer les formes à partir des connaissances
         rowForms1=generateRowForms(row,contextFree)
 
@@ -185,21 +207,24 @@ def generateFromTrial(trialFormes,contextFree):
         # sélectionner les cliques fidèles
         faithfulCliques=getFaithfulCliques(row,lexCliques)
 
-        # trier les cliques par tailles
-        sortedCliques=sortCliques(faithfulCliques)
-        maxLen=max(sortedCliques)
-        maxCliques=sortedCliques[maxLen]
+        if faithfulCliques:
+            # trier les cliques par tailles
+            sortedCliques=sortCliques(faithfulCliques)
+            maxLen=max(sortedCliques)
+            maxCliques=sortedCliques[maxLen]
 
-        # sélectionner les cliques avec le meilleur score
-        maxClique=getMaxScoreClique(maxCliques,graphe)
+            # sélectionner les cliques avec le meilleur score
+            maxClique=getMaxScoreClique(maxCliques,graphe)
 
-        # finaliser une clique avec les cliques max et les complémentaires
-        finalClique=completeMaxClique(sortedCliques,maxClique)
+            # finaliser une clique avec les cliques max et les complémentaires
+            finalClique=completeMaxClique(sortedCliques,maxClique)
 
-        # transformer la clique en dictRow
-        dictRow=dictCliqueForms(finalClique)
-        newRows.append(dictRow)
-
+            # transformer la clique en dictRow
+            dictRow=dictCliqueForms(finalClique)
+            newRows.append(dictRow)
+        else:
+            newRows.append(row.to_dict())
+    # display(newRows)
     trialGen=pd.DataFrame(newRows)
     inCases=trialGen.columns
     outCases=list(set(analyseCases)-set(inCases))
