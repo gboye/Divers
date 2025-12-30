@@ -3,6 +3,7 @@ MechanicalSoup.*
 test/.*
 *.tsv
 *.csv
+*.xlsx
 *.jpeg
 *.jpg
 *.png
