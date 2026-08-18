@@ -1,0 +1,552 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$module$/top/Défaut pour TEST GLOSES</text>
+    </category>
+  </question>
+  <question type="gapselect">
+    <name>
+      <text>vacances(F.PL)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><b>vacances</b> dans C'est les vacances !</p><p dir="ltr" style="text-align: left;"><span style="font-size: calc({0.90375rem}{0.045vw});">[[1]][[2]][[3]][[4]][[5]][[6]]</span></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html"></generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte. Voici la glose détaillée : vacances(F.PL)</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <selectoption>
+      <text>vacances</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>(</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>F</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>PL</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>)</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>vacance</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>[</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>]</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>-</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>=</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>M</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>N</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>SG</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>DU</text>
+      <group>3</group>
+    </selectoption>
+  </question>
+  <question type="gapselect">
+    <name>
+      <text>bassine(F)[PL]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><b>bassines</b> dans Les bassines ont débordé.</p><p dir="ltr" style="text-align: left;"><span style="font-size: calc({0.90375rem}{0.045vw});">[[1]][[2]][[3]][[4]][[5]][[6]][[7]]</span></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html"></generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte. Voici la glose détaillée : bassine(F)[PL]</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <selectoption>
+      <text>bassine</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>(</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>F</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>)</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>[</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>PL</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>]</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>bassin</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>bassins</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>bassines</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>-</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>=</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>M</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>N</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>SG</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>DU</text>
+      <group>3</group>
+    </selectoption>
+  </question>
+  <question type="gapselect">
+    <name>
+      <text>cheval(M)-PL</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><b>chevaux</b> dans Les chevaux courent.</p><p dir="ltr" style="text-align: left;"><span style="font-size: calc({0.90375rem}{0.045vw});">[[1]][[2]][[3]][[4]][[5]][[6]]</span></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html"></generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte. Voici la glose détaillée : cheval(M)-PL</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <selectoption>
+      <text>cheval</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>(</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>M</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>)</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>-</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>PL</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>chevaux</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>[</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>]</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>=</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>F</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>N</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>SG</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>DU</text>
+      <group>3</group>
+    </selectoption>
+  </question>
+  <question type="gapselect">
+    <name>
+      <text>bassin(M)[SG]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><b>bassin</b> dans Le bassin a débordé.</p><p dir="ltr" style="text-align: left;"><span style="font-size: calc({0.90375rem}{0.045vw});">[[1]][[2]][[3]][[4]][[5]][[6]][[7]]</span></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html"></generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte. Voici la glose détaillée : bassin(M)[SG]</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <selectoption>
+      <text>bassin</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>(</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>M</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>)</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>[</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>SG</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>]</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>bassins</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>bassine</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>bassines</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>-</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>=</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>F</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>N</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>DU</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>PL</text>
+      <group>3</group>
+    </selectoption>
+  </question>
+  <question type="gapselect">
+    <name>
+      <text>cheval(M)-SG</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><b>cheval</b> dans Le cheval court.</p><p dir="ltr" style="text-align: left;"><span style="font-size: calc({0.90375rem}{0.045vw});">[[1]][[2]][[3]][[4]][[5]][[6]]</span></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html"></generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte. Voici la glose détaillée : cheval(M)-SG</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <selectoption>
+      <text>cheval</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>(</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>M</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>)</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>-</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>SG</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>chevaux</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>[</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>]</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>=</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>F</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>N</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>DU</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>PL</text>
+      <group>3</group>
+    </selectoption>
+  </question>
+  <question type="gapselect">
+    <name>
+      <text>INDEF.PL-PL.ANT.+[M]</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"><b>de</b> dans De grands chevaux courent.</p><p dir="ltr" style="text-align: left;"><span style="font-size: calc({0.90375rem}{0.045vw});">[[1]][[2]][[3]][[4]][[5]][[6]][[7]][[8]][[9]][[10]][[11]][[12]]</span></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html"></generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <shuffleanswers>1</shuffleanswers>
+    <correctfeedback format="html">
+      <text>Votre réponse est correcte. Voici la glose détaillée : INDEF.PL-PL.ANT.+[M]</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Votre réponse est partiellement correcte.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Votre réponse est incorrecte.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <selectoption>
+      <text>INDEF</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>PL</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>-</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>PL</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>.</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>[</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>M</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>]</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>de</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>des</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>un</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>une</text>
+      <group>1</group>
+    </selectoption>
+    <selectoption>
+      <text>(</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>)</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>=</text>
+      <group>2</group>
+    </selectoption>
+    <selectoption>
+      <text>F</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>N</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>SG</text>
+      <group>3</group>
+    </selectoption>
+    <selectoption>
+      <text>DU</text>
+      <group>3</group>
+    </selectoption>
+  </question>
+</quiz>
